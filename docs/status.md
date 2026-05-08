@@ -11,7 +11,7 @@ Tracking against the v0.1 / v0.2 readiness gates declared in [`mpa-atlas/archite
 
 | # | Component | Gate | Status | Blockers |
 |---|---|---|---|---|
-| 1 | Single-artifact validator | end-to-end against existing artifacts | scaffolded — RFC-1 inv. 1/3/5/6/7, RFC-2 inv. 1/2/4/6/7, RFC-S §4 sections+header, RFC-RI shape | (a) JSON Schema files (per `handoff_schema_files.md`) for full schema-shape validation. (b) An actual published spec / signature / r_doc to validate against. |
+| 1 | Single-artifact validator | end-to-end against existing artifacts | **working** — structural shape delegated to mpa-atlas/schema/*.json (Draft 2020-12); §3-extras (capacity, tower-convergence) run after as separate `RFC1.INV.<n>` diagnostics. | None — schemas now exist at `H:\mpa-atlas\schema\` and propagate via `$ref` so RFC-2 required fields surface inside R_doc validation automatically. |
 | 2 | Constellation validator | end-to-end | scaffolded — RFC-3 C1–C5 + K1 | Same as (1b). |
 | 3 | Compiler (spec × intent → R_doc) | works against surface-code | **working (Sonnet 4.6, validator-gatekept)** | None — Sonnet emits R_doc; component 1 validates the structure; constellation validates against driver. End-to-end round-trip on minimal fixtures: rc=0. |
 | 4 | Round-trip checker | works against surface-code | stub | Surface-code reference dataset (real measurement traces, not just the driver profile). |
@@ -36,7 +36,7 @@ Not started. Triggered by [`handoff_habit-extinction_reference-driver.md`](https
 
 ## Known gaps
 
-- **No JSON Schema validation yet.** When the four schema files (handoff_schema_files.md) land at `mpa-atlas/schema/`, component 1 should delegate shape validation to `jsonschema` and keep §3-invariant predicates as separate post-schema checks. Until then, component 1's shape checks are programmatic re-encodings of each RFC's §2.
-- **Spec inv. 4 (scale-monotonicity) only fires on multi-band declarations.** Single-band specs trivially satisfy it; this is a real coverage gap when multi-band specs appear.
+- **Spec inv. 4 (scale-monotonicity) not yet implemented.** Schema admits multi_band shape; the cross-band monotonicity check (no inverse regime transitions, γ doesn't strengthen at wider τ_obs) lives in code and is deferred until a multi-band spec lands as a stress case.
 - **Spec inv. 2 (sign-canonicity) is trust-based.** No mechanical signal distinguishes a canonical-sign from substrate-native-sign spec; the discipline lives at the driver layer.
+- **Sig inv. 6 sampling adequacy** (sample density vs declared precision) is substrate-dependent; deferred to driver tolerance.
 - **RFC-V checks are narrow by design.** High-precision-low-recall — three warning rules and a coverage report. Broader checks need a LaTeX-aware parser, not in v0.1 scope.

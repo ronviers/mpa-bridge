@@ -65,7 +65,7 @@ def test_compile_validator_gatekeeps_bad_rdoc(tmp_path, monkeypatch, capsys):
     )
     assert rc == 1
     err = capsys.readouterr().err
-    assert "RFC-RI" in err  # gatekeeper fired
+    assert "SCHEMA.r_doc" in err  # validator-gatekeeper fired via schema
 
 
 def test_compile_writes_rdoc_to_output(tmp_path, monkeypatch):

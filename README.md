@@ -10,7 +10,7 @@ Seven components, per [`mpa-atlas/architecture/handoff_protocol-tool.md`](https:
 
 | # | Component | Status |
 |---|---|---|
-| 1 | Single-artifact validator (RFC-1/2/RI + driver profile) | scaffolded |
+| 1 | Single-artifact validator (schema-delegated + §3 extras) | working |
 | 2 | Constellation validator (RFC-3 C1–C5, K1) | scaffolded |
 | 3 | Compiler (spec × intent → R_doc, RFC-RI) | working (Sonnet-assisted, validator-gatekept) |
 | 4 | Round-trip checker (RFC-S §5) | stub |
@@ -49,7 +49,15 @@ mpa-bridge vocab <document.md>
 
 `round-trip` is the only remaining stub.
 
-Diagnostics carry stable codes: `RFC1.INV.5`, `RFC2.INV.7`, `RFC3.C1`, `RFC3.K1`, `RFCV.S4`, etc. The code names the RFC-rule the diagnostic flags.
+Diagnostics carry stable codes:
+
+- `SCHEMA.<kind>` — structural validation (delegated to mpa-atlas/schema/*.json)
+- `RFC1.INV.<n>` — §3 invariants exceeding schema (capacity, tower-convergence)
+- `RFC3.C<n>` / `RFC3.K<n>` — cross-artifact consistency / completeness
+- `RFCV.S<n>.<tag>` — RFC-V vocabulary checks
+- `BRIDGE.<TAG>` — tool-internal status
+
+Component 1 delegates structural shape to the JSON Schemas in mpa-atlas; if the schemas aren't on disk, structural validation falls back to a `BRIDGE.SCHEMA_MISSING` warning and the §3-extras still run.
 
 ## Discipline
 
