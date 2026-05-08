@@ -12,9 +12,9 @@ Seven components, per [`mpa-atlas/architecture/handoff_protocol-tool.md`](https:
 |---|---|---|
 | 1 | Single-artifact validator (RFC-1/2/RI + driver profile) | scaffolded |
 | 2 | Constellation validator (RFC-3 C1–C5, K1) | scaffolded |
-| 3 | Compiler (spec × intent → R_doc, RFC-RI) | stub |
+| 3 | Compiler (spec × intent → R_doc, RFC-RI) | working (Sonnet-assisted, validator-gatekept) |
 | 4 | Round-trip checker (RFC-S §5) | stub |
-| 5 | Driver discoverer (DBS-backward) | stub |
+| 5 | Driver discoverer (DBS-backward) | working (Claude-assisted, Haiku) |
 | 6 | Characterization-gap reporter (DBS-backward) | working (Claude-assisted, Haiku) |
 | 7 | Vocabulary checker (RFC-V) | working (narrow) |
 
@@ -41,10 +41,13 @@ pip install -e .
 ```
 mpa-bridge validate <artifact.json|.yaml>
 mpa-bridge constellation --spec S.json --driver D.json --rdoc R.json [--signatures sig1.json sig2.json ...]
+mpa-bridge compile --spec S.json --intent I1 --driver D.json [--output R.json]
+mpa-bridge discover <data.md>
+mpa-bridge gap-report <data.md>
 mpa-bridge vocab <document.md>
 ```
 
-Stubs (compile, round-trip, discover, gap-report) print their planned interface and exit non-zero.
+`round-trip` is the only remaining stub.
 
 Diagnostics carry stable codes: `RFC1.INV.5`, `RFC2.INV.7`, `RFC3.C1`, `RFC3.K1`, `RFCV.S4`, etc. The code names the RFC-rule the diagnostic flags.
 

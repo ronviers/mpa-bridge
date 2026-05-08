@@ -38,9 +38,17 @@ def main(argv: list[str] | None = None) -> int:
     p_vocab = sub.add_parser("vocab", help="Component 7: RFC-V vocabulary check on a markdown/text document.")
     p_vocab.add_argument("path", help="Path to a document.")
 
-    sub.add_parser("compile", help="Component 3 (stub).").add_argument("path", nargs="?", default="")
+    p_compile = sub.add_parser("compile", help="Component 3: spec × intent → R_doc (Claude-assisted).")
+    p_compile.add_argument("--spec", required=True)
+    p_compile.add_argument("--intent", required=True, choices=["I1", "I2", "I3", "I4", "I5"])
+    p_compile.add_argument("--driver", required=True)
+    p_compile.add_argument("--output", default=None, help="Write R_doc here; otherwise print to stdout.")
+
     sub.add_parser("round-trip", help="Component 4 (stub).").add_argument("path", nargs="?", default="")
-    sub.add_parser("discover", help="Component 5 (stub).").add_argument("path", nargs="?", default="")
+
+    p_disc = sub.add_parser("discover", help="Component 5: rank drivers against data (Claude-assisted).")
+    p_disc.add_argument("path", help="Path to data description (text/markdown).")
+
     p_gap = sub.add_parser("gap-report", help="Component 6: characterization-gap reporter (DBS-backward).")
     p_gap.add_argument("path", help="Path to data description (text/markdown).")
 
@@ -53,11 +61,11 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "vocab":
         return _run_vocab(args.path)
     if args.cmd == "compile":
-        return compile_.run()
+        return compile_.run(args.spec, args.intent, args.driver, args.output)
     if args.cmd == "round-trip":
         return round_trip.run()
     if args.cmd == "discover":
-        return discover.run()
+        return discover.run(args.path)
     if args.cmd == "gap-report":
         return gap_report.run(args.path)
     return 2

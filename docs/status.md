@@ -13,13 +13,13 @@ Tracking against the v0.1 / v0.2 readiness gates declared in [`mpa-atlas/archite
 |---|---|---|---|---|
 | 1 | Single-artifact validator | end-to-end against existing artifacts | scaffolded — RFC-1 inv. 1/3/5/6/7, RFC-2 inv. 1/2/4/6/7, RFC-S §4 sections+header, RFC-RI shape | (a) JSON Schema files (per `handoff_schema_files.md`) for full schema-shape validation. (b) An actual published spec / signature / r_doc to validate against. |
 | 2 | Constellation validator | end-to-end | scaffolded — RFC-3 C1–C5 + K1 | Same as (1b). |
-| 3 | Compiler (spec × intent → R_doc) | works against surface-code | stub | Schemas + canonical-snapshot field shape; surface-code intent operation tables. |
-| 4 | Round-trip checker | works against surface-code | stub | Surface-code reference dataset. |
-| 5 | Driver discoverer (DBS-backward) | works against surface-code | stub | Driver registry (currently only surface-code; v0.2 trigger is habit-extinction). |
+| 3 | Compiler (spec × intent → R_doc) | works against surface-code | **working (Sonnet 4.6, validator-gatekept)** | None — Sonnet emits R_doc; component 1 validates the structure; constellation validates against driver. End-to-end round-trip on minimal fixtures: rc=0. |
+| 4 | Round-trip checker | works against surface-code | stub | Surface-code reference dataset (real measurement traces, not just the driver profile). |
+| 5 | Driver discoverer (DBS-backward) | works against surface-code | **working (Claude-assisted, Haiku 4.5)** | None — produces ranked-list output. Currently only one driver in registry, so "ranking" is trivial; gets meaningful at v0.2 with habit-extinction. |
 | 6 | Characterization-gap reporter | works against surface-code | **working (Claude-assisted, Haiku 4.5)** | None — produces structured gap reports against v9 + reference-drivers/. Quality gradeable from `D:\Cache\mpa-bridge\` records. |
 | 7 | Vocabulary checker (RFC-V) | end-to-end | working (narrow) | None — narrow checks ship; broader semantic checks need a LaTeX-aware parser. |
 
-**Summary:** components 1, 2, 7 are scaffolded with mechanical checks running against fixture artifacts. Real-artifact end-to-end blocks on schema files landing in mpa-atlas. Components 3–6 are stubs; their blockers are listed.
+**Summary:** components 1, 2, 5, 6, 7 working; component 3 working with validator-gatekeeper pattern (Sonnet emits, deterministic validator certifies). Component 4 (round-trip) remains a stub — it needs a real measurement dataset, not a synthesis surface. Schema files (separate mpa-atlas session) would let component 1 delegate shape-validation to `jsonschema`, but the existing programmatic checks already match each RFC's §2 / §3.
 
 ## v0.2 readiness gates
 
