@@ -8,21 +8,24 @@
       "regime_class": "c",
       "parametric_plot": {"samples": [{"tau": 0.1, "chi": 0.0, "C0_minus_C": 0.0}]},
       "universality_tuple": {"X_c": 0.0},
-      "observer_kernel": {"form": "point", "value": 1.0}
+      "observer_kernel": {"form": "point", "value": 1.0},
+      "measurement_envelope": {"D_range": [1.0, 100.0]}
     },
     {
       "object_ref": "v2",
       "regime_class": "c",
       "parametric_plot": {"samples": [{"tau": 0.1, "chi": 0.0, "C0_minus_C": 0.0}]},
       "universality_tuple": {"X_c": 0.0},
-      "observer_kernel": {"form": "point", "value": 1.0}
+      "observer_kernel": {"form": "point", "value": 1.0},
+      "measurement_envelope": {"D_range": [1.0, 100.0]}
     },
     {
       "object_ref": "e1",
       "regime_class": "c",
       "parametric_plot": {"samples": [{"tau": 0.1, "chi": 0.0, "C0_minus_C": 0.0}]},
       "universality_tuple": {"X_c": 0.0},
-      "observer_kernel": {"form": "point", "value": 1.0}
+      "observer_kernel": {"form": "point", "value": 1.0},
+      "measurement_envelope": {"D_range": [1.0, 100.0]}
     }
   ],
   "acceptance": {"forward_threshold": 0.1, "round_trip_threshold": 0.1},
