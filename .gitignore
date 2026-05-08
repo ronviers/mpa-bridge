@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+.ruff_cache/
+
+# Build / dist
+build/
+dist/
+*.egg-info/
+*.egg
+.eggs/
+
+# Virtualenvs
+.venv/
+venv/
+env/
+.envrc
+
+# Editor / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
+
+# Profiler artifact (rotated keys, but never commit)
+dev_profile.json
+
+# Local secrets (defense in depth)
+*.env
+.env.*
+!.env.example
+
+# Lockfiles for tooling that pre-dates a chosen pinning strategy
+poetry.lock
+uv.lock

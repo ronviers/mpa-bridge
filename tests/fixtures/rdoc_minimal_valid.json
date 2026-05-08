@@ -1,0 +1,30 @@
+{
+  "spec_ref": "spec_minimal_valid",
+  "intent": "I1",
+  "canonical_snapshot": {"V": ["v1", "v2"], "E": ["e1"]},
+  "signature_targets": [
+    {
+      "object_ref": "v1",
+      "regime_class": "c",
+      "parametric_plot": {"samples": [{"tau": 0.1, "chi": 0.0, "C0_minus_C": 0.0}]},
+      "universality_tuple": {"X_c": 0.0},
+      "observer_kernel": {"form": "point", "value": 1.0}
+    },
+    {
+      "object_ref": "v2",
+      "regime_class": "c",
+      "parametric_plot": {"samples": [{"tau": 0.1, "chi": 0.0, "C0_minus_C": 0.0}]},
+      "universality_tuple": {"X_c": 0.0},
+      "observer_kernel": {"form": "point", "value": 1.0}
+    },
+    {
+      "object_ref": "e1",
+      "regime_class": "c",
+      "parametric_plot": {"samples": [{"tau": 0.1, "chi": 0.0, "C0_minus_C": 0.0}]},
+      "universality_tuple": {"X_c": 0.0},
+      "observer_kernel": {"form": "point", "value": 1.0}
+    }
+  ],
+  "acceptance": {"forward_threshold": 0.1, "round_trip_threshold": 0.1},
+  "realizer_class_target": "surface-code-qec"
+}

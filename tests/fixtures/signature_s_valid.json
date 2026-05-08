@@ -1,0 +1,14 @@
+{
+  "object_ref": "v1",
+  "regime_class": "s",
+  "parametric_plot": {
+    "samples": [
+      {"tau": 0.1, "chi": 0.05, "C0_minus_C": 0.1},
+      {"tau": 0.5, "chi": 0.20, "C0_minus_C": 0.4},
+      {"tau": 1.0, "chi": 0.35, "C0_minus_C": 0.7}
+    ]
+  },
+  "universality_tuple": {"alpha_s": 0.62, "P_s": 0.45},
+  "observer_kernel": {"form": "point", "value": 1.0, "units": "cycles"},
+  "measurement_envelope": {"D_range": [5.0, 15.0]}
+}

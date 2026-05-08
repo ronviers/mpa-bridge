@@ -1,0 +1,7 @@
+{
+  "V": [{"id": "v1", "trail_vector_type": "stabilizer-ema", "regime_target": "c"}],
+  "E": [],
+  "Gamma": [],
+  "D": {"form": "point", "value": 10.0},
+  "tau_obs": {"form": "point", "value": 1.0, "units": "cycles"}
+}

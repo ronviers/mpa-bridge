@@ -1,0 +1,39 @@
+{
+  "header": {
+    "profile_version": "v0.1",
+    "target_rfc_versions": ["RFC-1 v0.2", "RFC-S v0.2"],
+    "substrate_class": "surface-code-qec",
+    "characterization_date": "2026-05-08",
+    "authority": "reference",
+    "validation_history": []
+  },
+  "operating_envelope": {
+    "initial_conditions": "logical-Z eigenstate, distance-3 rotated",
+    "parameter_ranges": {"p": [0.0, 0.01]},
+    "measurement_protocol": "memory-Z syndrome extraction at fixed cycle"
+  },
+  "gamut": {
+    "D_range": [1.0, 100.0],
+    "tau_obs_range": [1.0, 10.0],
+    "shear_profile_envelope": "stabilizer-graph topology",
+    "trail_class_support": ["stabilizer-ema"],
+    "persistence_depth": 5,
+    "contraction_rate_fit": "ε empirical, sub-threshold"
+  },
+  "translation_field": {
+    "substrate_to_canonical": "EMA on detection events",
+    "canonical_to_substrate": "predicted stabilizer-flip rate",
+    "auto_remap_rule": "differentiated EMA"
+  },
+  "intents": {
+    "I1": {"supported": true, "gamut_mapping": "scale uniform", "sacrifice": "absolute D, gamma"},
+    "I2": {"supported": true, "gamut_mapping": "exact in-gamut, reject above D_max", "sacrifice": "completeness"},
+    "I3": {"supported": true, "gamut_mapping": "pattern-preserving reduction", "sacrifice": "absolute drive"},
+    "I4": {"supported": true, "gamut_mapping": "across kernel-width ascents", "sacrifice": "absolute drive"},
+    "I5": {"supported": true, "gamut_mapping": "preserves universality class", "sacrifice": "exact intra-class"}
+  },
+  "reference_outputs": [
+    {"input": "distance-3 memory-Z, p=0.001", "expected_response": "s-aging diagonal", "tolerance": "intra-class < 10%"}
+  ],
+  "metadata": {"methodology": "hand-derived from v9", "known_limitations": "no N_f under uncorrelated depolarizing"}
+}

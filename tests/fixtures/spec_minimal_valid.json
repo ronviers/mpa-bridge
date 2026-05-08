@@ -1,0 +1,18 @@
+{
+  "V": [
+    {"id": "v1", "trail_vector_type": "stabilizer-ema", "regime_target": "c"},
+    {"id": "v2", "trail_vector_type": "stabilizer-ema", "regime_target": "c"}
+  ],
+  "E": [
+    {"id": "e1", "endpoints": ["v1", "v2"], "shear": -0.4, "reciprocity": "symmetric"}
+  ],
+  "Gamma": [],
+  "D": {"form": "point", "value": 10.0},
+  "tau_obs": {"form": "point", "value": 1.0, "units": "cycles"},
+  "P": {"tower": [{"D_n": 10.0, "ε_n": 0.5, "S_n": "n=0"}]},
+  "demand_envelope": {
+    "per_object": [
+      {"object_id": "v1", "signatures_required": ["c"], "precision": "categorical", "observer_positions": ["point"]}
+    ]
+  }
+}
