@@ -47,7 +47,8 @@ Compile an MPA spec object × intent into a realizer-interface document
         "regime_class": "c" | "s" | "r" | "k_frust",
         "parametric_plot": {"samples": [...]},
         "universality_tuple": <regime-conditional fields per RFC-2 §3 inv 2>,
-        "observer_kernel": <tau_obs spec>
+        "observer_kernel": <tau_obs spec>,
+        "measurement_envelope": <subset of driver.operating_envelope per RFC-2 §2 — required>
       },
       ...one entry per spec-object element (V, E, declared Gamma)...
     ],

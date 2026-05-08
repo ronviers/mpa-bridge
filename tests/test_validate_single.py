@@ -47,3 +47,18 @@ def test_rdoc_minimal_valid_no_errors():
     diags, kind = _validate("rdoc_minimal_valid.json")
     assert kind == "r_doc"
     assert not has_errors(diags), [d.format() for d in diags]
+
+
+def test_rdoc_recurses_into_signature_targets():
+    """RFC-RI §2: signature_targets are full RFC-2 FDR signatures.
+    A malformed target should produce RFC-2 diagnostics with target-prefixed paths.
+    """
+    from mpa_bridge import artifacts, validate_single
+    from mpa_bridge.diagnostics import Severity
+    doc = artifacts.load(FIX / "rdoc_minimal_valid.json")
+    # Break the second signature_target: drop the regime-required X_c field
+    doc["signature_targets"][1]["universality_tuple"] = {}
+    diags = validate_single.validate(doc, "r_doc", source="t")
+    errors = [d for d in diags if d.severity is Severity.ERROR and d.code == "RFC2.INV.2"]
+    assert errors, f"expected RFC2.INV.2 from recursion, got: {[d.format() for d in diags]}"
+    assert any("signature_targets[1]" in d.path for d in errors), [d.path for d in errors]

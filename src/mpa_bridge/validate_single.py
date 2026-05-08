@@ -380,6 +380,19 @@ def _validate_r_doc(doc: dict, src: str) -> Iterable[Diagnostic]:
             src, "realizer_class_target",
         )
 
+    # Each signature_target is a full RFC-2 FDR signature (RFC-RI §2).
+    # Recurse so RFC-2 invariants propagate.
+    for i, target in enumerate(targets):
+        if not isinstance(target, dict):
+            continue
+        for d in _validate_signature(target, src):
+            prefix = f"signature_targets[{i}]"
+            new_path = f"{prefix}.{d.path}" if d.path else prefix
+            yield Diagnostic(
+                code=d.code, severity=d.severity, message=d.message,
+                artifact=d.artifact, path=new_path,
+            )
+
 
 # --- driver profile (RFC-S §4) ----------------------------------------------
 
