@@ -16,7 +16,7 @@ Tracking against the v0.1 / v0.2 readiness gates declared in [`mpa-atlas/archite
 | 3 | Compiler (spec × intent → R_doc) | works against surface-code | stub | Schemas + canonical-snapshot field shape; surface-code intent operation tables. |
 | 4 | Round-trip checker | works against surface-code | stub | Surface-code reference dataset. |
 | 5 | Driver discoverer (DBS-backward) | works against surface-code | stub | Driver registry (currently only surface-code; v0.2 trigger is habit-extinction). |
-| 6 | Characterization-gap reporter | works against surface-code | stub | Same registry + small read-only loader for v9 §Substrate-conditional reading rules. |
+| 6 | Characterization-gap reporter | works against surface-code | **working (Claude-assisted, Haiku 4.5)** | None — produces structured gap reports against v9 + reference-drivers/. Quality gradeable from `D:\Cache\mpa-bridge\` records. |
 | 7 | Vocabulary checker (RFC-V) | end-to-end | working (narrow) | None — narrow checks ship; broader semantic checks need a LaTeX-aware parser. |
 
 **Summary:** components 1, 2, 7 are scaffolded with mechanical checks running against fixture artifacts. Real-artifact end-to-end blocks on schema files landing in mpa-atlas. Components 3–6 are stubs; their blockers are listed.
@@ -29,8 +29,9 @@ Not started. Triggered by [`handoff_habit-extinction_reference-driver.md`](https
 
 ## Discipline notes
 
-- **Substrate-neutral by construction.** No substrate-specific logic anywhere in `src/mpa_bridge/`. Drivers carry that. Component 6 is the lone exception — it reads v9 §Substrate-conditional reading rules to find the closest substrate class for a gap report. Keep that surface narrow.
-- **Mechanical-only validation.** Every C# / K# rule is computable from artifact contents. No human judgment.
+- **Substrate-neutral by construction.** No substrate-specific logic anywhere in `src/mpa_bridge/`. Drivers carry that. Component 6 reads v9 + reference-drivers as system context for Claude; the tool itself encodes none of it.
+- **Mechanical-only validation.** Components 1, 2, 4 are strictly deterministic. Same artifact → same diagnostics. The assist surface is forbidden inside validators — that's the load-bearing carve-out for CI to mean anything.
+- **DBS-backward via Claude.** Components 3, 5, 6 (compile, discover, gap-report) are the synthesis surfaces. They call `assist.ask` because the framework's commitment to *demand-bounded sufficiency* says the tool produces *some* answer rather than blocking on missing inputs. The cache at `D:\Cache\mpa-bridge\` doubles as a gradable run-log.
 - **Diagnostics carry stable codes.** Format: `RFC<n>.INV.<k>` for per-RFC §3 invariants, `RFC3.C<n>` / `RFC3.K<n>` for cross-artifact predicates, `RFCV.S<n>.<tag>` for RFC-V vocabulary checks, `BRIDGE.<TAG>` for tool-internal status. Tests assert on codes; diagnostics are exchange surface with CI.
 
 ## Known gaps

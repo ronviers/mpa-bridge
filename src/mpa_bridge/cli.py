@@ -41,7 +41,8 @@ def main(argv: list[str] | None = None) -> int:
     sub.add_parser("compile", help="Component 3 (stub).").add_argument("path", nargs="?", default="")
     sub.add_parser("round-trip", help="Component 4 (stub).").add_argument("path", nargs="?", default="")
     sub.add_parser("discover", help="Component 5 (stub).").add_argument("path", nargs="?", default="")
-    sub.add_parser("gap-report", help="Component 6 (stub).").add_argument("path", nargs="?", default="")
+    p_gap = sub.add_parser("gap-report", help="Component 6: characterization-gap reporter (DBS-backward).")
+    p_gap.add_argument("path", help="Path to data description (text/markdown).")
 
     args = parser.parse_args(argv)
 
@@ -58,7 +59,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "discover":
         return discover.run()
     if args.cmd == "gap-report":
-        return gap_report.run()
+        return gap_report.run(args.path)
     return 2
 
 

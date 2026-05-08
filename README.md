@@ -15,8 +15,16 @@ Seven components, per [`mpa-atlas/architecture/handoff_protocol-tool.md`](https:
 | 3 | Compiler (spec × intent → R_doc, RFC-RI) | stub |
 | 4 | Round-trip checker (RFC-S §5) | stub |
 | 5 | Driver discoverer (DBS-backward) | stub |
-| 6 | Characterization-gap reporter (DBS-backward) | stub |
+| 6 | Characterization-gap reporter (DBS-backward) | working (Claude-assisted, Haiku) |
 | 7 | Vocabulary checker (RFC-V) | working (narrow) |
+
+## Assist surface (DBS-backward operational vehicle)
+
+Synthesis surfaces (currently component 6, soon 3 and 5) call Claude through a thin wrapper at [`src/mpa_bridge/assist.py`](src/mpa_bridge/assist.py). Cache + run-log at `D:\Cache\mpa-bridge\` — every call writes a JSON record with model, system, prompt, response, timestamp, and token usage. The cache file *is* the log; grade runs after the fact by reading them.
+
+Validators (components 1, 2, 4) stay strictly mechanical. The contract: same artifact → same diagnostics, every run.
+
+Model assignment: Haiku 4.5 by default for synthesis surfaces; Sonnet 4.6 reserved for harder structured output (compile, when wired); Opus 4.7 only when a problem genuinely warrants it.
 
 v0.1 ships when 1, 2, 7 work end-to-end against existing mpa-atlas artifacts and 3, 4 work against the surface-code reference driver. v0.2 lands when habit-extinction reference driver lands and 3–6 work cross-substrate.
 
