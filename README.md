@@ -6,7 +6,7 @@ The protocol's checkable surface. Without the tool, the protocol is prose.
 
 ## What it does (status: v0 in progress)
 
-Seven components, per [`mpa-atlas/architecture/handoff_protocol-tool.md`](https://github.com/ronviers/mpa-atlas/blob/main/architecture/handoff_protocol-tool.md):
+Seven components (see [docs/status.md](docs/status.md) for current readiness):
 
 | # | Component | Status |
 |---|---|---|

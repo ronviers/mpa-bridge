@@ -1,6 +1,6 @@
 # Status
 
-Tracking against the v0.1 / v0.2 readiness gates declared in [`mpa-atlas/architecture/handoff_protocol-tool.md`](https://github.com/ronviers/mpa-atlas/blob/main/architecture/handoff_protocol-tool.md) §"Completion criteria".
+Tracking against the v0.1 / v0.2 readiness gates for the seven components (see [README](../README.md) for the component table; [docs/handoff_next_session.md](handoff_next_session.md) for open work).
 
 ## v0.1 readiness gates
 
@@ -25,7 +25,7 @@ Tracking against the v0.1 / v0.2 readiness gates declared in [`mpa-atlas/archite
 
 > v0.2 ready when habit-extinction reference driver lands and components 3–6 work cross-substrate.
 
-Not started. Triggered by [`handoff_habit-extinction_reference-driver.md`](https://github.com/ronviers/mpa-atlas/blob/main/architecture/handoff_habit-extinction_reference-driver.md) landing in mpa-atlas.
+Not started. Triggered by habit-extinction reference driver landing in mpa-atlas (see [`mpa-atlas/docs/handoff_next_session.md`](https://github.com/ronviers/mpa-atlas/blob/main/docs/handoff_next_session.md) Open item 2).
 
 ## Discipline notes
 

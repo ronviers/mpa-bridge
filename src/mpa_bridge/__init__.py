@@ -1,7 +1,6 @@
 """mpa-bridge: protocol tool for mpa-atlas.
 
-See README.md and CLAUDE.md.
-Plan of record: mpa-atlas/architecture/handoff_protocol-tool.md
+See README.md and CLAUDE.md. Open items in docs/handoff_next_session.md.
 """
 
 __version__ = "0.0.1"

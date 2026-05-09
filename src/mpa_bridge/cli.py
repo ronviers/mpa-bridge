@@ -1,6 +1,6 @@
 """Command-line entry point.
 
-Subcommands map to the seven components named in handoff_protocol-tool.md.
+Subcommands map to the seven components named in README.md.
 Components 3-6 are stubs in v0.1; they print their planned interface and
 exit non-zero with code BRIDGE.STUB.
 """
