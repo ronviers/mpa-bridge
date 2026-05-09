@@ -44,7 +44,9 @@ def main(argv: list[str] | None = None) -> int:
     p_compile.add_argument("--driver", required=True)
     p_compile.add_argument("--output", default=None, help="Write R_doc here; otherwise print to stdout.")
 
-    sub.add_parser("round-trip", help="Component 4 (stub).").add_argument("path", nargs="?", default="")
+    p_rt = sub.add_parser("round-trip", help="Component 4: forward + round-trip error per RFC-S §5.")
+    p_rt.add_argument("--rdoc", required=True)
+    p_rt.add_argument("--measured", nargs="+", required=True, help="One or more measured FDR signature files.")
 
     p_disc = sub.add_parser("discover", help="Component 5: rank drivers against data (Claude-assisted).")
     p_disc.add_argument("path", help="Path to data description (text/markdown).")
@@ -63,7 +65,7 @@ def main(argv: list[str] | None = None) -> int:
     if args.cmd == "compile":
         return compile_.run(args.spec, args.intent, args.driver, args.output)
     if args.cmd == "round-trip":
-        return round_trip.run()
+        return round_trip.run(args.rdoc, args.measured)
     if args.cmd == "discover":
         return discover.run(args.path)
     if args.cmd == "gap-report":

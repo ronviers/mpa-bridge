@@ -13,7 +13,7 @@ Seven components, per [`mpa-atlas/architecture/handoff_protocol-tool.md`](https:
 | 1 | Single-artifact validator (schema-delegated + §3 extras) | working |
 | 2 | Constellation validator (RFC-3 C1–C5, K1) | scaffolded |
 | 3 | Compiler (spec × intent → R_doc, RFC-RI) | working (Sonnet-assisted, validator-gatekept) |
-| 4 | Round-trip checker (RFC-S §5) | stub |
+| 4 | Round-trip checker (RFC-S §5) | working (I1 + I5 metrics; I2/I3/I4 emit METRIC_NA) |
 | 5 | Driver discoverer (DBS-backward) | working (Claude-assisted, Haiku) |
 | 6 | Characterization-gap reporter (DBS-backward) | working (Claude-assisted, Haiku) |
 | 7 | Vocabulary checker (RFC-V) | working (narrow) |
@@ -42,12 +42,13 @@ pip install -e .
 mpa-bridge validate <artifact.json|.yaml>
 mpa-bridge constellation --spec S.json --driver D.json --rdoc R.json [--signatures sig1.json sig2.json ...]
 mpa-bridge compile --spec S.json --intent I1 --driver D.json [--output R.json]
+mpa-bridge round-trip --rdoc R.json --measured sig1.json [sig2.json ...]
 mpa-bridge discover <data.md>
 mpa-bridge gap-report <data.md>
 mpa-bridge vocab <document.md>
 ```
 
-`round-trip` is the only remaining stub.
+All seven components ship. `round-trip` v0.1 implements I1 + I5 metrics; I2/I3/I4 emit `RFC-S5.METRIC_NA` info diagnostics until a substrate-realizer pair lands.
 
 Diagnostics carry stable codes:
 
