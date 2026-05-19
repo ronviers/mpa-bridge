@@ -1,5 +1,7 @@
 # mpa-bridge
 
+> **STATUS: SUPERSEDED (2026-05-18).** Functions absorbed into the May 15 [suite block-in](https://github.com/ronviers/mpa-central/blob/main/SUITE_BLOCK_IN.md): structural validation moved into [mpa-atlas/schema/](https://github.com/ronviers/mpa-atlas/tree/main/schema) (JSON Schema Draft 2020-12); compile / discover / gap-report functions shifted to [mpa-conform](https://github.com/ronviers/mpa-conform)'s curator path. Repository archived and preserved for history; see git log for the v0.1 component implementations.
+
 Protocol tool for [mpa-atlas](https://github.com/ronviers/mpa-atlas). Operates on the artifacts the RFCs govern: spec objects, FDR signatures, driver profiles, realizer-interface documents.
 
 The protocol's checkable surface. Without the tool, the protocol is prose.
