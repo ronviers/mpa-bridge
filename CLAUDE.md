@@ -2,6 +2,10 @@
 
 This repo is the **protocol tool** for [mpa-atlas](https://github.com/ronviers/mpa-atlas). It is downstream of the protocol — it reads, validates, compiles, and round-trips against artifacts the mpa-atlas RFCs govern.
 
+## Program-level discipline
+
+This repo is a **validator** per [`H:/mpa-central/METHODOLOGY.md`](../mpa-central/METHODOLOGY.md) Cut 4 — round-trip discipline on artifacts the mpa-atlas RFCs govern. Protocol-shaped surfaces inherit thin-RFC discipline (next section); implementation code is normal engineering.
+
 ## What thin-RFC discipline does and does not govern here
 
 mpa-atlas carries [thin-RFC discipline](https://github.com/ronviers/mpa-atlas/blob/main/CLAUDE.md). That discipline governs **protocol-shaped artifacts** (RFC documents, schema files, exchange contracts). It does **not** govern this repo's implementation code — same carve-out as `mpa-character` makes for its UI/engine/tests.
